@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    
+    <title>Markdown Previewer by Khalid Albarbari</title>
+    <script src="./JS/marked.js"></script>
+
+    
+    <script>
+
+        function updatePreview() {
+            let previewElement = document.getElementById("preview");
+            let editorValue = document.getElementById("editor").value;
+            let markedUpHTML = marked(editorValue);
+            previewElement.innerHTML = markedUpHTML; 
+        }
+
+        function setDefault() {
+            let defaultText = `\
+#  Khalid Albarbari
+## Markdown Previewer
+[Youtube channel name](mrkholio)
+
+<dl>
+    <dt>Definition list</dt>
+    <dd>Is something people use sometimes.</dd>
+
+    <dt>Markdown in HTML</dt>
+    <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+\'\'\'
+function forExample() {
+    return multiLineCode;
+}
+\'\'\'
+
+\`Thanks\`
+- Have Ability
+- To
+- Learn
+
+> Code for life
+
+![MrKholio](https://xyuandbeyond.com/wp-content/uploads/2018/06/boudewijn-bo-boer-522261-unsplash.jpg)
+
+**Bolded Text**
+`;
+            let editorField = document.getElementById("editor")
+            let previewElement = document.getElementById("preview");
+            editorField.value = defaultText;
+            previewElement.innerHTML = marked(defaultText)
+        }
+
+        marked.setOptions({
+          breaks: true
+})
+    </script>
+
+    
+  </head>
+  <body onload="setDefault()" class="bg-success">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col text-center text-white bg-success my-3">
+                  <h1>Markdown Previewer by Khalid Albarbari</h1>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6 bg-primary d-flex flex-column">
+                  <h2 class="text-white text-center my-3">Editor</h2>
+                    <div class="form-group flex-grow-1 d-flex flex-column">
+                        <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+                    </div>
+              </div>
+              <div class="col-6 bg-danger">
+                  <h2 class="text-white text-center my-3">Previewer</h2>
+                  <div id="preview"></div>
+              </div>
+          </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
